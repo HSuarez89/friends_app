@@ -1,0 +1,14 @@
+<% if notice %>
+  <div class="alert alert-success" role="alert">New friend successfully saved!</div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-danger" role="alert"><%= alert %></div>
+<% end %>
+<%= render @friend %>
+
+<div>
+  <%= link_to "Edit", edit_friend_path(@friend), class: "btn btn-secondary" %>
+  <%= link_to "Back", friends_path, class: "btn btn-secondary"%>
+
+  <%= link_to "Delete", @friend, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+</div>

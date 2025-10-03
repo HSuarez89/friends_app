@@ -1,0 +1,42 @@
+<% if notice %>
+<div class="alert alert-danger" role="alert"><%= notice %></div>
+<% end %>
+
+<% content_for :title, "Friends" %>
+
+<h1>Friends</h1>
+
+<div id="friends">
+  <%= link_to "New Friend", new_friend_path, class: "btn btn-success mt-3" %>
+  <table class="table table-striped mt-4">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Instagram</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+        <td> <%= friend.first_name %> </td>
+        <td> <%= friend.last_name %> </td>
+        <td> <%= friend.email %> </td>
+        <td> <%= friend.instagram %> </td>
+        <td> <%= link_to "Show", friend %> </td>
+        <td> <%= link_to "Edit", edit_friend_path(friend) %> </td>
+        <td>
+          <%= link_to "Delete", friend, 
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+
